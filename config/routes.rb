@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   root 'topics#index'
+  devise_for :users
   resources :topics do
     member do
       post 'upvote'
+      delete 'downvote'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
