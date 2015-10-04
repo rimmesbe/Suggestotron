@@ -7,6 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class='clearfix'>
+    <div class="left-nav">
+      <ul>
+        <li><%= link_to "Home", topics_path %></li>
+      </ul>
+    </div>
+    <div class="right-nav">
+      <% if current_user %>
+        <ul>
+          <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
+          <li><%= link_to "sign-out", destroy_user_session_path, :method => :delete %></li>
+        </ul>
+      <% else %>
+        <ul>
+          <li><%= link_to "sign-up", new_user_registration_path %></li>
+          <li><%= link_to "sign-in", new_user_session_path %></li>
+        </ul>
+      <%end%>
+    </div>
+  </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
